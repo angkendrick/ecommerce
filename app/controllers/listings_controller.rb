@@ -12,6 +12,7 @@ class ListingsController < ApplicationController
   end
 
   def show
+    @listing = Listing.find(params[:id])
   end
 
   def new
@@ -25,30 +26,24 @@ class ListingsController < ApplicationController
     @listing = Listing.new(listing_params)
     @listing.user_id = current_user.id
 
-    respond_to do |format|
       if @listing.save
-        redirect_to @listing, notice: 'Listing was successfully created.'
+        redirect_to root_url, notice: 'Listing was successfully created.'
       else
         render :new
       end
-    end
   end
 
   def update
-    respond_to do |format|
       if @listing.update(listing_params)
-        redirect_to @listing, notice: 'Listing was successfully updated.'
+        redirect_to root_url, notice: 'Listing was successfully updated.'
       else
         render :edit
       end
-    end
   end
 
   def destroy
     @listing.destroy
-    respond_to do |format|
       redirect_to listings_url, notice: 'Listing was successfully destroyed.'
-    end
   end
 
   private
