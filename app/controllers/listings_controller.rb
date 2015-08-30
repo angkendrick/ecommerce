@@ -27,9 +27,9 @@ class ListingsController < ApplicationController
 
     respond_to do |format|
       if @listing.save
-        format.html { redirect_to @listing, notice: 'Listing was successfully created.' }
+        redirect_to @listing, notice: 'Listing was successfully created.'
       else
-        format.html { render :new }
+        render :new
       end
     end
   end
@@ -37,9 +37,9 @@ class ListingsController < ApplicationController
   def update
     respond_to do |format|
       if @listing.update(listing_params)
-        format.html { redirect_to @listing, notice: 'Listing was successfully updated.' }
+        redirect_to @listing, notice: 'Listing was successfully updated.'
       else
-        format.html { render :edit }
+        render :edit
       end
     end
   end
@@ -47,7 +47,7 @@ class ListingsController < ApplicationController
   def destroy
     @listing.destroy
     respond_to do |format|
-      format.html { redirect_to listings_url, notice: 'Listing was successfully destroyed.' }
+      redirect_to listings_url, notice: 'Listing was successfully destroyed.'
     end
   end
 

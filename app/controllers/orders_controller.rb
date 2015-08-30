@@ -3,19 +3,19 @@ class OrdersController < ApplicationController
   before_action :authenticate_user! #devise makes sure user is signed in
 
 
-  def index
-    @orders = Order.all
+  def sales
+    @orders = Order.all.where(seller: current_user).order("created_at DESC")
+    puts "hi"
   end
 
-  def show
+  def purchases
+    @orders = Order.all.where(buyer: current_user).order("created_at DESC")
+    puts "hi"
   end
 
   def new
     @order = Order.new
     @listing = Listing.find(params[:listing_id]) #gets params from url:id
-  end
-
-  def edit
   end
 
   def create
@@ -28,25 +28,25 @@ class OrdersController < ApplicationController
     @order.seller_id = @seller.id
 
       if @order.save
-        format.html { redirect_to root_url, notice: 'Order was successfully created.' }
+        redirect_to root_url, notice: 'Order was successfully created.'
       else
-        format.html { render :new }
+        render :new
       end
   end
 
   def update
     respond_to do |format|
       if @order.update(order_params)
-        format.html { redirect_to @order, notice: 'Order was successfully updated.' }
+        redirect_to @order, notice: 'Order was successfully updated.'
       else
-        format.html { render :edit }
+        render :edit
       end
     end
   end
 
   def destroy
     @order.destroy
-      format.html { redirect_to orders_url, notice: 'Order was successfully destroyed.' }
+      redirect_to orders_url, notice: 'Order was successfully destroyed.'
   end
 
   private
