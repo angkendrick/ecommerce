@@ -1,28 +1,17 @@
 == README
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+Buy & Sell application
+Built on Ruby on Rails and Bootstrap
 
-Things you may want to cover:
+Create User
+User can sign-in
+User can create a listing
+User can upload an image (gets stored in dropbox)
+User can 'buy' a listing of another User
+User can view purchase history
 
-* Ruby version
+TODO:
 
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
-
-
-Please feel free to use a different markup language if you do not plan to run
-<tt>rake doc:app</tt>.
+Send email to User after signup
+Send email to User when another User 'buys' his listing
+Send email to User when he 'buys' a listing
