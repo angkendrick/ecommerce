@@ -1,4 +1,6 @@
 == README
+Ruby: 2.2.1
+Rails: 4.2.3
 
 Buy & Sell application
 Built on Ruby on Rails and Bootstrap
